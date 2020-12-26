@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/anat-graph/static/css/main.04350e3e.chunk.css",
+    "main.js": "/anat-graph/static/js/main.f6575d42.chunk.js",
+    "main.js.map": "/anat-graph/static/js/main.f6575d42.chunk.js.map",
+    "runtime-main.js": "/anat-graph/static/js/runtime-main.13fded95.js",
+    "runtime-main.js.map": "/anat-graph/static/js/runtime-main.13fded95.js.map",
+    "static/js/2.125309aa.chunk.js": "/anat-graph/static/js/2.125309aa.chunk.js",
+    "static/js/2.125309aa.chunk.js.map": "/anat-graph/static/js/2.125309aa.chunk.js.map",
+    "static/js/3.f6f208a8.chunk.js": "/anat-graph/static/js/3.f6f208a8.chunk.js",
+    "static/js/3.f6f208a8.chunk.js.map": "/anat-graph/static/js/3.f6f208a8.chunk.js.map",
+    "index.html": "/anat-graph/index.html",
+    "static/css/main.04350e3e.chunk.css.map": "/anat-graph/static/css/main.04350e3e.chunk.css.map",
+    "static/js/2.125309aa.chunk.js.LICENSE.txt": "/anat-graph/static/js/2.125309aa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13fded95.js",
+    "static/js/2.125309aa.chunk.js",
+    "static/css/main.04350e3e.chunk.css",
+    "static/js/main.f6575d42.chunk.js"
+  ]
+}
