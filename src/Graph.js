@@ -64,6 +64,22 @@ const Graph = ({
     xLabel = "Time [Hours]",
     showErrors,
 }) => {
+    const xTicks = [];
+
+    if (data[0]) {
+        const maxX = data[0].data.reduce((max, d) => {
+            if (d.x > max) {
+                return d.x;
+            } else {
+                return max;
+            }
+        }, 0);
+
+        for (let x = 0; x < maxX + 2; x += 5) {
+            xTicks.push(x);
+        }
+    }
+
     return (
         <div>
             <VictoryChart
@@ -138,7 +154,7 @@ const Graph = ({
                     theme={VictoryTheme.material}
                     label={xLabel}
                     crossAxis={false}
-                    tickValues={[0, 5, 10, 15, 20, 25, 30, 35, 40]}
+                    tickValues={xTicks}
                     style={{
                         axis: { stroke: textColor },
                         grid: { stroke: "gray" },
