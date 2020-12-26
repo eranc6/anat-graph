@@ -94,6 +94,16 @@ const Main = () => {
         window.localStorage.setItem("data", JSON.stringify(data));
     };
 
+    const handleClear = () => {
+        window.localStorage.setItem("data", "");
+        setTitle("");
+        setLineName("");
+        setLineCells("");
+        setGraphs([]);
+        setErrorMsg("");
+        dispatch({ type: SET_STATE, state: { resultText: "", data: [], lines: [] } });
+    };
+
     const handleReadTable = () => {
         if (state.resultText === "") {
             setErrorMsg("Forgot to copy the result?");
@@ -109,12 +119,14 @@ const Main = () => {
         const data = [];
 
         for (let row = 1; row < lines.length; row++) {
-            const r = {};
-            const line = lines[row].split("\t");
-            line.forEach((value, col) => {
-                r[headers[col]] = value;
-            });
-            data.push(r);
+            if (lines[row] !== "" && lines[row].length > 10) {
+                const r = {};
+                const line = lines[row].split("\t");
+                line.forEach((value, col) => {
+                    r[headers[col]] = value;
+                });
+                data.push(r);
+            }
         }
 
         console.log("data", data);
@@ -130,11 +142,18 @@ const Main = () => {
     };
 
     const handleAddCell = (row, col) => {
+        let newLineCells = "";
         if (lineCells === "") {
-            setLineCells(row + col);
+            newLineCells = row + col;
         } else {
-            setLineCells(lineCells + "," + row + col);
+            newLineCells = lineCells + "," + row + col;
         }
+
+        if (newLineCells.startsWith(",")) {
+            newLineCells = newLineCells.substring(1);
+        }
+
+        setLineCells(newLineCells);
     };
 
     const getTime = (t) => {
@@ -195,14 +214,27 @@ const Main = () => {
                 }}
             >
                 <Typography variant="h6">Anat's Graph</Typography>
-                <Button
-                    variant="contained"
-                    size="small"
-                    color="secondary"
-                    onClick={handleSave}
-                >
-                    Save
-                </Button>
+
+                <div>
+                    <Button
+                        variant="outlined"
+                        size="small"
+                        color="secondary"
+                        onClick={handleClear}
+                    >
+                        Clear Data
+                    </Button>
+
+                    <Button
+                        variant="contained"
+                        size="small"
+                        color="secondary"
+                        onClick={handleSave}
+                        style={{ marginLeft: 16 }}
+                    >
+                        Save
+                    </Button>
+                </div>
             </div>
 
             {errorMsg ? (
@@ -260,18 +292,18 @@ const Main = () => {
                                     <TableCell key={header}>{header}</TableCell>
                                 ))}
                             </TableRow>
-                            <TableBody>
-                                {state.data.map((row, rowIndex) => (
-                                    <TableRow key={rowIndex}>
-                                        {Object.values(row).map((col, colIndex) => (
-                                            <TableCell key={rowIndex + "." + colIndex}>
-                                                {col}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))}
-                            </TableBody>
                         </TableHead>
+                        <TableBody>
+                            {state.data.map((row, rowIndex) => (
+                                <TableRow key={rowIndex}>
+                                    {Object.values(row).map((col, colIndex) => (
+                                        <TableCell key={rowIndex + "." + colIndex}>
+                                            {col}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
                     </Table>
                 ) : null}
             </Paper>
