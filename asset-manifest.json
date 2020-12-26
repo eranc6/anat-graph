@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/anat-graph/static/css/main.8ddd8b4a.chunk.css",
-    "main.js": "/anat-graph/static/js/main.2dfe7c86.chunk.js",
-    "main.js.map": "/anat-graph/static/js/main.2dfe7c86.chunk.js.map",
+    "main.js": "/anat-graph/static/js/main.c5c994e9.chunk.js",
+    "main.js.map": "/anat-graph/static/js/main.c5c994e9.chunk.js.map",
     "runtime-main.js": "/anat-graph/static/js/runtime-main.87749fc0.js",
     "runtime-main.js.map": "/anat-graph/static/js/runtime-main.87749fc0.js.map",
     "static/js/2.14d82454.chunk.js": "/anat-graph/static/js/2.14d82454.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.87749fc0.js",
     "static/js/2.14d82454.chunk.js",
     "static/css/main.8ddd8b4a.chunk.css",
-    "static/js/main.2dfe7c86.chunk.js"
+    "static/js/main.c5c994e9.chunk.js"
   ]
 }
