@@ -62,6 +62,7 @@ const Graph = ({
     textColor = "black",
     yLabel = "Fluorescence",
     xLabel = "Time [Hours]",
+    showErrors,
 }) => {
     return (
         <div>
@@ -117,17 +118,21 @@ const Graph = ({
                     />
                 ))}
 
-                {data.map((d, index) => (
-                    <VictoryErrorBar
-                        key={d.name}
-                        data={d.data}
-                        style={{
-                            data: {
-                                stroke: d.color ? d.color : colors[index % colors.length],
-                            },
-                        }}
-                    />
-                ))}
+                {showErrors
+                    ? data.map((d, index) => (
+                          <VictoryErrorBar
+                              key={d.name}
+                              data={d.data}
+                              style={{
+                                  data: {
+                                      stroke: d.color
+                                          ? d.color
+                                          : colors[index % colors.length],
+                                  },
+                              }}
+                          />
+                      ))
+                    : null}
 
                 <VictoryAxis
                     theme={VictoryTheme.material}

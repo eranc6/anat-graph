@@ -13,9 +13,14 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+
 import RemoveIcon from "@material-ui/icons/Close";
 
 import Graph from "./Graph";
+
+const bgColor = "#fff";
 
 const SET_RESULT_TEXT = "SET_RESULT_TEXT";
 const SET_DATA = "SET_DATA";
@@ -66,6 +71,7 @@ const Main = () => {
     const [lineCells, setLineCells] = useState([]);
     const [graphs, setGraphs] = useState([]);
     const [title, setTitle] = useState("Title");
+    const [showErrors, setShowErrors] = useState(true);
     const [errorMsg, setErrorMsg] = useState("");
     const [state, dispatch] = useReducer(reducer, {
         resultText: "",
@@ -205,7 +211,7 @@ const Main = () => {
                 </Alert>
             ) : null}
 
-            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: "#ccc" }}>
+            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: bgColor }}>
                 <Typography>Step 1) Copy the result table including headers</Typography>
 
                 <pre>
@@ -270,7 +276,7 @@ const Main = () => {
                 ) : null}
             </Paper>
 
-            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: "#ccc" }}>
+            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: bgColor }}>
                 <Typography>Step 2) Add Lines</Typography>
                 <br />
 
@@ -368,7 +374,7 @@ const Main = () => {
                 ))}
             </Paper>
 
-            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: "#ccc" }}>
+            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: bgColor }}>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <Typography>Step 3) </Typography>
                     <Button
@@ -390,10 +396,22 @@ const Main = () => {
                         InputLabelProps={{ shrink: true }}
                         style={{ marginLeft: 16 }}
                     />
+
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={showErrors}
+                                onChange={() => setShowErrors(!showErrors)}
+                                color="primary"
+                                style={{ marginLeft: 16 }}
+                            />
+                        }
+                        label="Show Errors"
+                    />
                 </div>
             </Paper>
-            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: "#ccc" }}>
-                <Graph data={graphs} title={title} />
+            <Paper style={{ padding: 20, marginBottom: 20, backgroundColor: bgColor }}>
+                <Graph data={graphs} title={title} showErrors={showErrors} />
             </Paper>
             <br />
         </div>
